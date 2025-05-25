@@ -66,6 +66,21 @@ const RobotSimulator: React.FC = () => {
     }
   };
 
+  const getRobotSymbol = (direction: string) => {
+    switch (direction) {
+      case 'NORTH':
+        return '🤖↑';
+      case 'SOUTH':
+        return '🤖↓';
+      case 'EAST':
+        return '🤖→';
+      case 'WEST':
+        return '←🤖';
+      default:
+        return '🤖';
+    }
+  };
+
   useEffect(() => {
     reportPosition();
     window.addEventListener('keydown', handleKey);
@@ -74,7 +89,7 @@ const RobotSimulator: React.FC = () => {
 
   return (
     <div className="app-wrapper">
-      <h1>Toy Robot Simulator</h1>
+      <p>Click to place the robot, use the buttons or arrows to move</p>
 
       <div className="container">
         {[4, 3, 2, 1, 0].map((y) => (
@@ -87,7 +102,7 @@ const RobotSimulator: React.FC = () => {
                   onClick={() => placeRobot(x, y)}
                   className={`cell ${isRobot ? 'robot' : ''}`}
                 >
-                  {isRobot ? '🤖' : ''}
+                  {isRobot ? getRobotSymbol(robot!.direction) : ''}
                 </div>
               );
             })}
