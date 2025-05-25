@@ -25,6 +25,16 @@ const RobotSimulator: React.FC = () => {
     }
   };
 
+  const sendCommand = async (command: 'move' | 'left' | 'right') => {
+    try {
+      const res = await fetch(`${API_BASE}/${command}`, { method: 'POST' });
+      const data = await res.json();
+      setRobot(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <h1>Toy Robot Simulator</h1>
@@ -58,6 +68,12 @@ const RobotSimulator: React.FC = () => {
             })}
           </div>
         ))}
+      </div>
+
+      <div style={{ marginTop: 10 }}>
+        <button onClick={() => sendCommand('move')}>MOVE</button>
+        <button onClick={() => sendCommand('left')}>LEFT</button>
+        <button onClick={() => sendCommand('right')}>RIGHT</button>
       </div>
     </div>
   );
