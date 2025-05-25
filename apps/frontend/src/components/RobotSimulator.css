@@ -1,5 +1,22 @@
+/* Center whole page content vertically and horizontally */
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+/* Main wrapper to align content vertically in a column */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center for children */
+  gap: 20px; /* spacing between elements */
+}
+
 .container {
-  display: inline-block;
   border: 1px solid black;
 }
 
@@ -24,10 +41,19 @@
   font-weight: bold;
 }
 
-.buttonContainer {
-  margin-top: 10px;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.reportButton {
-  margin-left: 10px;
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.position-container {
+  margin-top: 10px;
+  text-align: center;
 }

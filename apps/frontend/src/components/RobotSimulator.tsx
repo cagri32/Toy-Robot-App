@@ -68,7 +68,7 @@ const RobotSimulator: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="app-wrapper">
       <h1>Toy Robot Simulator</h1>
 
       <div className="container">
@@ -91,9 +91,11 @@ const RobotSimulator: React.FC = () => {
       </div>
 
       <div className="button-container">
-        <button onClick={() => sendCommand('move')}>MOVE</button>
-        <button onClick={() => sendCommand('left')}>LEFT</button>
-        <button onClick={() => sendCommand('right')}>RIGHT</button>
+        <div className="button-row">
+          <button onClick={() => sendCommand('move')}>MOVE</button>
+          <button onClick={() => sendCommand('left')}>LEFT</button>
+          <button onClick={() => sendCommand('right')}>RIGHT</button>
+        </div>
         <button onClick={reportPosition} className="report-button">
           REPORT
         </button>
