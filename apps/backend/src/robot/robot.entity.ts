@@ -19,7 +19,7 @@ export class Robot {
   @Column()
   y: number;
 
-  @Column({ type: 'enum', enum: ['NORTH', 'SOUTH', 'EAST', 'WEST'] })
+  @Column()
   direction: Direction;
 
   @CreateDateColumn()

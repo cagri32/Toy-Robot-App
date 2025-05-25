@@ -53,8 +53,8 @@ describe('RobotService', () => {
     });
 
     expect(mockRepository.create).toHaveBeenCalledWith({
-      x: 0,
-      y: 0,
+      x: 1,
+      y: 2,
       direction: 'NORTH',
     });
     expect(mockRepository.save).toHaveBeenCalledWith(robotEntity);

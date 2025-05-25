@@ -7,6 +7,7 @@
     "build": "turbo run build",
     "start": "node apps/backend/dist/main",
     "lint": "turbo run lint",
+    "test": "turbo run test",
     "lint:fix": "eslint 'apps/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ export class RobotController {
     return this.robotService.createTestRobot(createRobotDto);
   }
 
-  @Get()
+  @Get('last')
   getLast(): Promise<Robot | null> {
     return this.robotService.getLastPosition();
   }
@@ -25,6 +25,21 @@ export class RobotController {
   @Post('place')
   place(@Body() body: { x: number; y: number; direction: Robot['direction'] }) {
     return this.robotService.place(body.x, body.y, body.direction);
+  }
+
+  @Post('move')
+  move() {
+    return this.robotService.move();
+  }
+
+  @Post('left')
+  left() {
+    return this.robotService.turnLeft();
+  }
+
+  @Post('right')
+  right() {
+    return this.robotService.turnRight();
   }
 
   @Get('history')

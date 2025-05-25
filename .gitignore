@@ -73,3 +73,11 @@ out/
 
 # Mac system files
 .DS_Store
+
+# Ignore SQLite DBs
+*.db
+
+# Ignore build artifacts
+*.js
+*.js.map
+*.d.ts
