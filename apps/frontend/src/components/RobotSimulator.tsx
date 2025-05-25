@@ -38,7 +38,11 @@ const RobotSimulator: React.FC = () => {
 
   const reportPosition = async () => {
     try {
-      const res = await fetch(`${API_BASE}/report`);
+      const res = await fetch(`${API_BASE}/last`);
+      if (!res.ok) {
+        setRobot(null);
+        return;
+      }
       const data = await res.json();
       setRobot(data);
     } catch (error) {
@@ -63,6 +67,7 @@ const RobotSimulator: React.FC = () => {
   };
 
   useEffect(() => {
+    reportPosition();
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
