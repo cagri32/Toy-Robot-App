@@ -35,6 +35,16 @@ const RobotSimulator: React.FC = () => {
     }
   };
 
+  const reportPosition = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/report`);
+      const data = await res.json();
+      setRobot(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <h1>Toy Robot Simulator</h1>
@@ -74,6 +84,9 @@ const RobotSimulator: React.FC = () => {
         <button onClick={() => sendCommand('move')}>MOVE</button>
         <button onClick={() => sendCommand('left')}>LEFT</button>
         <button onClick={() => sendCommand('right')}>RIGHT</button>
+        <button onClick={reportPosition} style={{ marginLeft: 10 }}>
+          REPORT
+        </button>
       </div>
     </div>
   );
