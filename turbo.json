@@ -11,6 +11,9 @@
             "outputs": [
                 "dist/**"
             ]
+        },
+        "lint": {
+            "outputs": []
         }
     }
 }
