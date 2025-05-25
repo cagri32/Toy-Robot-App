@@ -6,12 +6,23 @@ type Robot = {
   direction: string;
 };
 
+const API_BASE = '/api/robot';
+
 const RobotSimulator: React.FC = () => {
   const [robot, setRobot] = useState<Robot | null>(null);
 
-  const placeRobot = (x: number, y: number) => {
-    // placeholder, no API yet
-    setRobot({ x, y, direction: 'NORTH' });
+  const placeRobot = async (x: number, y: number) => {
+    try {
+      const res = await fetch(`${API_BASE}/place`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ x, y, direction: 'NORTH' }),
+      });
+      const data = await res.json();
+      setRobot(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
