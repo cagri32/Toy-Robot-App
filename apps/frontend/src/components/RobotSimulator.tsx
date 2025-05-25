@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RobotSimulator.css';
 
 type Robot = {
@@ -46,6 +46,27 @@ const RobotSimulator: React.FC = () => {
     }
   };
 
+  const handleKey = (e: KeyboardEvent) => {
+    switch (e.key) {
+      case 'ArrowUp':
+        sendCommand('move');
+        break;
+      case 'ArrowLeft':
+        sendCommand('left');
+        break;
+      case 'ArrowRight':
+        sendCommand('right');
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
+
   return (
     <div>
       <h1>Toy Robot Simulator</h1>
@@ -76,6 +97,16 @@ const RobotSimulator: React.FC = () => {
         <button onClick={reportPosition} className="report-button">
           REPORT
         </button>
+      </div>
+
+      <div className="position-container">
+        {robot ? (
+          <div>
+            Position: ({robot.x}, {robot.y}), Direction: {robot.direction}
+          </div>
+        ) : (
+          <div>Robot not placed yet</div>
+        )}
       </div>
     </div>
   );
