@@ -17,7 +17,7 @@ export class RobotController {
     return this.robotService.createTestRobot(createRobotDto);
   }
 
-  @Get('last')
+  @Get('report')
   getLast(): Promise<Robot | null> {
     return this.robotService.getLastPosition();
   }

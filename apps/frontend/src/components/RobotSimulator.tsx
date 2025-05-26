@@ -38,7 +38,7 @@ const RobotSimulator: React.FC = () => {
 
   const reportPosition = async () => {
     try {
-      const res = await fetch(`${API_BASE}/last`);
+      const res = await fetch(`${API_BASE}/report`);
       if (!res.ok) {
         setRobot(null);
         return;
